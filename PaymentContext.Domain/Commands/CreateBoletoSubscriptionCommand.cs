@@ -14,6 +14,7 @@ namespace PaymentContext.Domain.Commands
         public string Email { get; set; }
         public string BarCode { get; set; }
         public string BoletoNumber { get; set; }
+        public string PaymentNumber { get; set; }
         public DateTime PaidDate { get; set; }
         public DateTime ExpireDate { get; set; }
         public decimal Total { get; set; }
