@@ -1,31 +1,29 @@
+using System;
 namespace PaymentContext.Domain.Entities
 {
     public abstract class Payment // abstrato -> não posso instanciar essa classe
     {
-        public string Number { get; set; }
-        public DateTime PaidDate { get; set; }
-        public DateTime ExpireDate { get; set; }
-        public decimal Total { get; set; }
-        public decimal TotalPaid { get; set; }
-        public string Payer { get; set; }
-        public string Document { get; set; }
-        public string Adress { get; set; }
-        public string Email { get; set; }
+        protected Payment(DateTime paidDate, DateTime expireDate, decimal total, decimal totalPaid, string payer, Document document, string adress, Email email)
+        {
+            Number = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10).ToUpper();
+            PaidDate = paidDate;
+            ExpireDate = expireDate;
+            Total = total;
+            TotalPaid = totalPaid;
+            Payer = payer;
+            Document = document;
+            Adress = adress;
+            Email = email;
+        }
+        public string Number { get; private set; }
+        public DateTime PaidDate { get; private set; }
+        public DateTime ExpireDate { get; private set; }
+        public decimal Total { get; private set; }
+        public decimal TotalPaid { get; private set; }
+        public string Payer { get; private set; }
+        public Document Document { get; private set; }
+        public string Adress { get; private set; }
+        public Email Email { get; private set; }
 
-    }
-    public class BoletoPayment : Payment
-    {
-        public string BarCode { get; set; } // código de barras
-        public string BoletoNumber { get; set; }
-    }
-    public class CreditCardPayment : Payment
-    {
-        public string CardHolderName { get; set; }
-        public string CardNumber { get; set; }
-        public string LastTransactionNumber { get; set; }
-    }
-    public class PayPalPayment : Payment // só precisa do e-mail
-    {
-        public string TransactionCode { get; set; }
     }
 }
