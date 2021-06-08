@@ -1,3 +1,5 @@
+using PaymentContext.Shared.ValueObject;
+
 namespace PaymentContext.Domain.ValueObjects
 {
     public class Name : ValueObject

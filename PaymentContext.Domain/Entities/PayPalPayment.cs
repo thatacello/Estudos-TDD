@@ -1,4 +1,7 @@
+using System;
 using System.Transactions;
+using PaymentContext.Domain.ValueObjects;
+
 namespace PaymentContext.Domain.Entities
 {
     
@@ -12,7 +15,7 @@ namespace PaymentContext.Domain.Entities
                             decimal totalPaid, 
                             string payer, 
                             Document document, 
-                            string adress, 
+                            Address adress, 
                             Email email) 
                             : base (paidDate, 
                                     expireDate, 
@@ -23,7 +26,7 @@ namespace PaymentContext.Domain.Entities
                                     adress, 
                                     email)
         {
-            transactionCode = transactionCode;
+            TransactionCode = transactionCode;
         }
         public string TransactionCode { get; private set; }
     }
