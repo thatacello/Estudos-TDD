@@ -1,9 +1,11 @@
 using System;
+using Flunt.Validations;
 using PaymentContext.Domain.ValueObjects;
+using PaymentContext.Shared.Entities;
 
 namespace PaymentContext.Domain.Entities
 {
-    public abstract class Payment // abstrato -> não posso instanciar essa classe
+    public abstract class Payment : Entity// abstrato -> não posso instanciar essa classe
     {
         protected Payment(DateTime paidDate, DateTime expireDate, decimal total, decimal totalPaid, string payer, Document document, Address adress, Email email)
         {
@@ -16,6 +18,12 @@ namespace PaymentContext.Domain.Entities
             Document = document;
             Adress = adress;
             Email = email;
+
+            AddNotifications(new Contract()
+                .Requires()
+                .IsGreaterThan(0, Total, "Payment.Total", "O total não pode ser zero")
+                .IsGreaterOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "O valor pago é menor do que o valor do contrato")
+            );
         }
         public string Number { get; private set; }
         public DateTime PaidDate { get; private set; }

@@ -19,9 +19,6 @@ namespace PaymentContext.Tests.Entities
             // var student = new Student("Bob", "Brown", "123456123", "bob@gmail.com");
             // // student.Subscription.Add(subscription); // -> para impedir que isso aconteça, utilizar IReadOnlyCollection, então será obrigado a usar o AddSubscription
             // student.AddSubscription(subscription);
-
-            
         }
-       
     }
 }
