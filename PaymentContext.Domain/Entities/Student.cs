@@ -2,7 +2,7 @@ using System.Reflection.Metadata;
 using System.Collections.Generic;
 namespace PaymentContext.Domain.Entities
 {
-    public class Student
+    public class Student : Entity
     {
         private IList<Subscription> _subscriptions;
         public Student(string Name, Document document, Email email)
